@@ -16,7 +16,7 @@ def menu():
         print("[2] Anwesenheit")
         print("[3] Zeiterfassung starten")
         print("[4] Zeiterfassung beenden")
-        print("[5] Einstellunge")
+        print("[5] Einstellungen")
         print("[0] Beenden\n")
 
         auswahl: int = int(input("-> "))
