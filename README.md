@@ -8,6 +8,7 @@ Eine weitere Funktion ist es, sich seine Anwesenheit anzeigen zu lassen (HomeOff
 - selenium 4.26.1
 
 Twill wird für die Prüfung der Anwesenheit benötigt.
+
 Selenium wird für die Zeiterfassung benötigt.
 
 # Wie stelle ich das Programm ein?
@@ -39,3 +40,4 @@ Bei der Anwesenheit meldet Twill sich mit den hinterlegten Login-Daten ein.
 Er Navigiert zu dem Anwesenheittab und lädt diese Temporer runter.
 Jetzt wird die gesamte Datei Zeile für Zeile durchgegangen und auf die Symbole geachtet.
 Diese werden zusammen gerechnet und der Prosentsatz dazu erstellt.
+
