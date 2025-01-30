@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 from time import sleep
 from Day import day, get_day_name
 from data import get_login, get_browser
-import os
+import os, keyboard
 
 def remove(string) -> str:
     string = string.replace(" ", "")
@@ -63,9 +63,10 @@ def login(browser):
                 # Alert(browser).accept()
                 alert = browser.switch_to.alert
                 alert.accept()
-                print("alert Exists in page")
+                #print("alert Exists in page")
         except TimeoutException:
-            print("alert does not Exist in page")
+            #print("alert does not Exist in page")
+            pass
 
         if remove(day()) == "HO":
             # Homeoffice - Radiobutton finden und auswählen
@@ -97,9 +98,9 @@ def log(h_log,m_log,s_log,login_status, bw) -> bool:
     #s: int = int(current_time.strftime("%S"))
 
     if login_status:
-        status: str = "Ausloggen"
+        status: str = "Beenden"
     elif not login_status:
-        status: str = "Einloggen"
+        status: str = "Starten"
     else:
         status: str = "Fehler"
 
@@ -119,10 +120,10 @@ def log(h_log,m_log,s_log,login_status, bw) -> bool:
     while m != m_log or h != h_log:
         sleep(1)
         os.system('cls')
-        print("Login Status:\n" + status + "\n")
+        print("Zeiterfassungsstatus:\n" + status + "\n")
         print("Ausgewählter Browser:\n" + bw + "\n")
         print("Aktueller Tag:\n" + day_name + "\n")
-        print("Einloggen als:\n" + einloggen_als + "\n")
+        print("Zeiterfassung starten als:\n" + einloggen_als + "\n")
         print(status + " um:")
         print(str(h_log) + ":" + str(m_log) + ":" + str(s_log))
         current_time = datetime.now()
@@ -132,6 +133,10 @@ def log(h_log,m_log,s_log,login_status, bw) -> bool:
         #s: int = int(current_time.strftime("%S"))
         print("\nAktuelle Zeit:")
         print(str_time)
+
+        if keyboard.is_pressed("esc"):
+            print("\nAutomatische Zeiterfassung beendet, drücke [ENTER] um zurück ins Menü zu kommen.")
+            return "Exit"
 
         # Aktualisierung bei Tagesänderung
         if m == 0 or h == 0:

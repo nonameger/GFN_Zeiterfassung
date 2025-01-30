@@ -1,3 +1,6 @@
+import os
+from PyAkN import PyAkN
+
 def load_data(file):
     f = open(file + ".dat", "r")
     return f
@@ -8,21 +11,17 @@ def save_data(file):
 
 def konfig():
 
-    konf: bool = True
+    while True:
+        os.system('cls')
 
-    while konf:
-        print("--- Einstellungen ---")
-        print("Was möchten Sie Anpassen?")
-        print("[1] - Login Zeit")
-        print("[2] - Logout Zeit")
-        print("[3] - HO/VO Tage")
-        print("[4] - Login Daten")
-        print("[0] - Zurück\n")
-
-        eingabe: int = int(input("-> "))
+        eingabe = int(PyAkN(0, 5, "--- Einstellungen ---", ["Zeiterfassung Starten - Zeit", "Zeiterfassung Beenden - Zeit", "HO/VO Tage", "Login + Browser Daten", "Zurück"]))
+        os.system('cls')
 
         match eingabe:
             case 1:
+                input()
+                os.system('cls')
+
                 f = load_data("t_in")
                 print("Aktuelle Konfiguration:")
                 print("Stunde: " + f.readline())
@@ -39,6 +38,9 @@ def konfig():
                 f.close()
 
             case 2:
+                input()
+                os.system('cls')
+
                 f = load_data("t_out")
                 print("Aktuelle Konfiguration:")
                 print("Stunde: " + f.readline())
@@ -55,6 +57,9 @@ def konfig():
                 f.close()
 
             case 3:
+                input()
+                os.system('cls')
+
                 f = load_data("day")
                 print("HO = Home Office")
                 print("VO = Vor Ort")
@@ -82,23 +87,15 @@ def konfig():
                 f.close()
 
             case 4:
-                f = load_data("data")
-                print("Aktuelle Konfiguration:")
-                print("Username: " + f.readline())
-                print("Passwort: " + "******" + "\n")
-                f.close()
+                input()
+                os.system('cls')
 
                 f = save_data("data")
                 print("Gib nun die neuen Werte ein:")
                 username: str = input("Username: ")
                 password: str = input("Password: ")
                 
-                print("Welcher Browser soll genutzt werden? [Standard: Edge]")
-                print("[1] Edge")
-                print("[2] Firefox")
-                print("[3] Chrome")
-                print("[4] Safari")
-                int_browser: int = int(input("-> "))
+                int_browser = int(PyAkN(0, 4, "Welcher Browser soll genutzt werden? [Standard: Edge]", ["Edge", "Firefox", "Chrome", "Safari"]))
                 browser = "Edge"
                 match int_browser:
                     case 1:
@@ -114,5 +111,9 @@ def konfig():
 
                 f.write("[SETTINGS]\n" + "[LOGIN]\n" + username + "\n" + password + "\n\n" + "[BROWSER]\n" + browser)
                 f.close()
+                
+                input("Press 'Enter' key to continue")
             case _:
-                konf = False
+                break;
+
+        os.system('cls')

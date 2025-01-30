@@ -6,6 +6,7 @@ Eine weitere Funktion ist es, sich seine Anwesenheit anzeigen zu lassen (HomeOff
 ## Was wird benötigt?
 - twill 3.3 
 - selenium 4.26.1
+- Keyboard
 
 Twill wird für die Prüfung der Anwesenheit benötigt.
 
