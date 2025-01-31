@@ -19,7 +19,6 @@ def konfig():
 
         match eingabe:
             case 1:
-                input()
                 os.system('cls')
 
                 f = load_data("t_in")
@@ -38,7 +37,6 @@ def konfig():
                 f.close()
 
             case 2:
-                input()
                 os.system('cls')
 
                 f = load_data("t_out")
@@ -57,7 +55,6 @@ def konfig():
                 f.close()
 
             case 3:
-                input()
                 os.system('cls')
 
                 f = load_data("day")
@@ -83,11 +80,10 @@ def konfig():
                 fr: str = input("Freitag: ")
                 sa: str = input("Samstag: ")
                 so: str = input("Sonntag: ")
-                f.write(mo + "\n" + di + "\n" + mi + "\n" + do + "\n" + fr + "\n" + sa + "\n" + so)
+                f.write(mo.upper() + "\n" + di.upper() + "\n" + mi.upper() + "\n" + do.upper() + "\n" + fr.upper() + "\n" + sa.upper() + "\n" + so.upper())
                 f.close()
 
             case 4:
-                input()
                 os.system('cls')
 
                 f = save_data("data")

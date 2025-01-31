@@ -17,28 +17,18 @@ def menu():
                 break;
             case 1:
                 os.system("cls")
-                input()
                 login_func()
-                input()
             case 2:
                 os.system("cls")
-                input()
                 aus()
-                input()
             case 3:
                 os.system("cls")
-                input()
                 m_login()
-                input()
             case 4:
                 os.system("cls")
-                input()
                 m_logout()
-                input()
             case 5:
                 os.system("cls")
-                input()
                 konfig()
-                input()
             case _:
                 break;

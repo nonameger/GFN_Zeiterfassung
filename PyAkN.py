@@ -54,4 +54,5 @@ def PyAkN(menu_selection:int, menu:int,titel:str, menu_titels: str):
             return 0
 
         if keyboard.is_pressed("enter"):
+            input()
             return menu_selection + 1
