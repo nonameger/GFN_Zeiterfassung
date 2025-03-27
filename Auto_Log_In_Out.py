@@ -1,6 +1,7 @@
 from Log import log
 from data import get_browser
 
+
 def login_func():
     login: bool = False
 
@@ -30,4 +31,4 @@ def login_func():
 
                 login = log(in_h, in_m, in_s, login, get_browser())
             else:
-                pass # Fehlermeldung Hinzufügen
+                pass  # Fehlermeldung Hinzufügen
