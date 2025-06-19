@@ -1,14 +1,19 @@
 from Log import log
 from data import get_browser
+from PyAkN import PyAkN
 
 
 def login_func():
     login: bool = False
 
-    if input("Wurde die Zeiterfassung bereits gestartet? - [y] = ja\n") == "y":
-        login = True
-    else:
-        login = False
+    auswahl = int(PyAkN(0, 3, "Wurde die Zeiterfassung bereits gestartet?", ["Nein", "Ja", "Abbrechen"]))
+    match auswahl:
+        case 1:
+            login = False
+        case 2:
+            login = True
+        case _:
+            login = "Exit"
 
     while True:
         if login == "Exit":

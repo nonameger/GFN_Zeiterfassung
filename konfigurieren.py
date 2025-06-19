@@ -58,28 +58,35 @@ def konfig():
                 os.system('cls')
 
                 f = load_data("day")
-                print("HO = Home Office")
-                print("VO = Vor Ort")
-                print("F = Frei")
-                print("Aktuelle Konfiguration:")
-                print("Montag: " + f.readline())
-                print("Dienstag: " + f.readline())
-                print("Dienstag: " + f.readline())
-                print("Mittwoch: " + f.readline())
-                print("Freitag: " + f.readline())
-                print("Samstag: " + f.readline())
-                print("Sonntag: " + f.readline() + "\n")
+                mo, di, mi, do, fr, sa, so = f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline(),f.readline() + "\n"
                 f.close()
 
                 f = save_data("day")
-                print("Gib nun die neuen Werte ein:")
-                mo: str = input("Montag: ")
-                di: str = input("Dienstag: ")
-                mi: str = input("Mittwoch: ")
-                do: str = input("Donnerstag: ")
-                fr: str = input("Freitag: ")
-                sa: str = input("Samstag: ")
-                so: str = input("Sonntag: ")
+                list_days = [mo, di, mi, do, fr, sa, so]
+                counter = 0
+                list_day_names = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+                for day in list_days:
+
+                    int_day = int(PyAkN(0, 3, f"Aktueller Wert für den Tag ({list_day_names[counter]}): {day}\nAuswahl des Tages: {list_day_names[counter]}", ["Vor Ort", "Home Office", "Frei"]))
+                    match int_day:
+                        case 1:
+                            list_days[counter] = "VO"
+                        case 2:
+                            list_days[counter] = "HO"
+                        case 3:
+                            list_days[counter] = "F"
+                        case _:
+                            pass
+                    counter += 1
+
+                mo = list_days[0]
+                di = list_days[1]
+                mi = list_days[2]
+                do = list_days[3]
+                fr = list_days[4]
+                sa = list_days[5]
+                so = list_days[6]
+                
                 f.write(mo.upper() + "\n" + di.upper() + "\n" + mi.upper() + "\n" + do.upper() + "\n" + fr.upper() + "\n" + sa.upper() + "\n" + so.upper())
                 f.close()
 
