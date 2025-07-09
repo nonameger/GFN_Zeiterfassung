@@ -41,21 +41,30 @@ def anwesenheit_funktion() -> str:
         print(" -!- Keine Daten gefunden -!- ")
         print(" -!- Fehler beim Login? -!- ")
         print(" -!- Überpüfe deine Login-Informationen. -!- \n")
-        return ("0", "0", "0", "0")
+        return ("0", "0", "0", "0", "0", "0")
     else:
         sHO = (HO * 100) / (HO + VO)
         sVO = (VO * 100) / (HO + VO)
+        
+        buffer = sVO - 51
+        buffer_days = 0
+        
+        if buffer > 0:
+            buffer_days = (buffer * (HO + VO) / 100)
 
-    return (str(HO), str(VO), str(round(sHO,2)), str(round(sVO,2)))
+    return (str(HO), str(VO), str(round(sHO,2)), str(round(sVO,2)), str(HO + VO), str(int(round(buffer_days,0))))
 
 
 def aus():
     erg = anwesenheit_funktion()
 
-    print("--- Anwesendheit ---")
-    print("Home Office: \t" + erg[0] + " Tage")
-    print(erg[2] + "%\n")
-    print("Vor Ort: \t" + erg[1] + " Tage")
-    print(erg[3] + "%\n")
+    print("--- Anwesendheit ---\n")
+    print("Tage Insgesamt: " + erg[4] + " Tage\n")
+    print("Home Office: \t" + erg[0] + " Tage" + " | " + erg[2] + "%\n")
+    print("Vor Ort: \t" + erg[1] + " Tage" + " | " + erg[3] + "%\n")
+    print("Puffer: \t" + erg[5] + " Tage")
+    print("(Tage die man noch im HomeOffice verbringen kann, ohne unter die 51% zu fallen)")
+    
+    print("\n")
 
     input("Press Enter..")
