@@ -3,15 +3,18 @@ from twill.commands import *
 from data import get_login
 
 def anwesenheit_funktion() -> str:
-    go("https://lernplattform.gfn.de/login/index.php")
+    try:
+        go("https://lernplattform.gfn.de/login/index.php")
 
-    data = get_login()
+        data = get_login()
 
-    formclear("1")
-    fv("1", "username", data[0])
-    fv("1", "password", data[1])
+        formclear("1")
+        fv("1", "username", data[0])
+        fv("1", "password", data[1])
 
-    submit("loginbtn")
+        submit("loginbtn")
+    except:
+        pass
 
     go("https://lernplattform.gfn.de/local/anmeldung/anwesenheit.php")
     Browser_url = twill.commands.browser.html
