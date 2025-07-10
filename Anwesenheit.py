@@ -1,4 +1,4 @@
-import twill.commands, os
+import twill.commands, os, math
 from twill.commands import *
 from data import get_login
 
@@ -49,13 +49,13 @@ def anwesenheit_funktion() -> str:
         sHO = (HO * 100) / (HO + VO)
         sVO = (VO * 100) / (HO + VO)
         
-        buffer = sVO - 51
-        buffer_days = 0
+        gTage = HO + VO
+        minVO = math.ceil(gTage * 0.51)
         
-        if buffer > 0:
-            buffer_days = (buffer * (HO + VO) / 100)
+        buffer_days = VO - minVO
 
-    return (str(HO), str(VO), str(round(sHO,2)), str(round(sVO,2)), str(HO + VO), str(int(round(buffer_days,0))))
+
+    return (str(HO), str(VO), str(round(sHO,2)), str(round(sVO,2)), str(HO + VO), str(buffer_days))
 
 
 def aus():
@@ -66,7 +66,7 @@ def aus():
     print("Home Office: \t" + erg[0] + " Tage" + " | " + erg[2] + "%\n")
     print("Vor Ort: \t" + erg[1] + " Tage" + " | " + erg[3] + "%\n")
     print("Puffer: \t" + erg[5] + " Tage")
-    print("(Tage die man noch im HomeOffice verbringen kann, ohne unter die 51% zu fallen)")
+    #print("(Tage die man noch im HomeOffice verbringen kann, ohne unter die 51% zu fallen)")
     
     print("\n")
 
