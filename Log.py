@@ -85,15 +85,14 @@ def login(browser):
         # Start zeiterfassung
         start_button = browser.find_element("css selector", "input[value='Starten']")
         start_button.click()
+
         browser.get("https://lernplattform.gfn.de/?starten=1")
         sleep(2)
         # Browser schließen
         browser.close()
     except Exception as e:
-        os.System("cls")
+        os.system("cls")
         browser.close()
-        print("Fehler bei der Anmeldung!")
-        input("Press Enter..")
 
 
 # Auto Log In Out
